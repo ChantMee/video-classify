@@ -1,0 +1,10 @@
+Test Dataset samples: 123
+Testing set accuracy:  0.9727138683217189
+              precision    recall  f1-score   support
+
+           0       0.96      1.00      0.98        78
+           1       1.00      0.93      0.97        45
+
+    accuracy                           0.98       123
+   macro avg       0.98      0.97      0.97       123
+weighted avg       0.98      0.98      0.98       123
