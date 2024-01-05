@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 from torchvision.io import read_image
 from torchvision.transforms import Resize, Compose
 from torch.utils.data import Dataset
+import random
 torch.manual_seed(2023)
 # Define the VideoFrameDataset class, which extends PyTorch's Dataset class.
 class VideoFrameDataset(Dataset):
@@ -41,8 +42,13 @@ class VideoFrameDataset(Dataset):
 
         # Retrieve and process frames for a given index.
         frame_paths = self.samples[idx]
-        # Select frames at equal intervals.
-        indices = np.linspace(0, len(frame_paths) - 1, self.frame_count).astype(int)
+        start_frame = 0
+        if len(frame_paths) > self.frame_count:
+            start_frame = random.randint(0, len(frame_paths) - self.frame_count)
+        end_frame = len(frame_paths) - 1
+        if end_frame - start_frame > self.frame_count:
+            end_frame = random.randint(start_frame + self.frame_count, end_frame)
+        indices = np.linspace(start_frame, end_frame, self.frame_count).astype(int)
         selected_frames = [frame_paths[i] for i in indices]
 
         images = []

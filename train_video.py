@@ -105,7 +105,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Hyperparameters.
 num_classes = 2
 epochs = 36
-batch_size = 8
+batch_size = 16
 learning_rate = 1e-5
 sample_size = 128
 sample_duration = 16  # Frame sampling duration.
@@ -118,8 +118,28 @@ if __name__ == '__main__':
         transforms.Resize([sample_size, sample_size]),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
-    train_set = VideoFrameDataset(root_dir="data/train", frame_count=sample_duration, transform=transform)
-    test_set = VideoFrameDataset(root_dir="data/test", frame_count=sample_duration, transform=transform)
+
+    # crop (fill with white), rotate, flip, normalize, add noise, to tensor
+    transform_train = transforms.Compose([
+        transforms.ToPILImage(),
+        transforms.RandomCrop([sample_size, sample_size], padding=4, padding_mode='reflect'),
+        transforms.Resize([sample_size, sample_size]),
+        transforms.RandomHorizontalFlip(),
+        # transforms.RandomVerticalFlip(),
+        transforms.RandomRotation(30),
+        transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+    transform_test = transforms.Compose([
+        transforms.ToPILImage(),
+        transforms.Resize([sample_size, sample_size]),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+
+    train_set = VideoFrameDataset(root_dir="data/train", frame_count=sample_duration, transform=transform_train)
+    test_set = VideoFrameDataset(root_dir="data/test", frame_count=sample_duration, transform=transform_test)
     logger.info("Dataset samples: {}".format(len(train_set) + len(test_set)))
     logger.info("Training samples: {}".format(len(train_set)))
     logger.info("Testing samples: {}".format(len(test_set)))
@@ -128,6 +148,9 @@ if __name__ == '__main__':
 
     # Model selection and preparation.
     model = r3d_18(pretrained=True, num_classes=num_classes).to(device)
+    # calculate the number of trainable parameters in the model
+    pytorch_total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    logger.info("Total number of trainable parameters: {}".format(pytorch_total_params))
 
     # Loss criterion and optimizer setup.
     criterion = nn.CrossEntropyLoss()
