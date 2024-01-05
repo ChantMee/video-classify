@@ -20,7 +20,7 @@ def train_epoch(model, criterion, optimizer, dataloader, device, epoch, logger, 
     all_label = []
     all_pred = []
 
-    print("train in device:" + str(device))
+    # print("train in device:" + str(device))
 
     for data in tqdm(dataloader):  # Progress bar for batches.
         inputs, labels = data['data'].to(device), data['label'].to(device)
@@ -153,7 +153,11 @@ if __name__ == '__main__':
     logger.info("Total number of trainable parameters: {}".format(pytorch_total_params))
 
     # Loss criterion and optimizer setup.
-    criterion = nn.CrossEntropyLoss()
+    num_items_class = train_set.get_num_item_each_class()
+    tot_num = sum(num_items_class)
+    weight = [tot_num / num_items_class[i] for i in range(len(num_items_class))]
+    weight = torch.FloatTensor(weight).to(device)
+    criterion = nn.CrossEntropyLoss(weight=weight)
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     # Training and validation loop.

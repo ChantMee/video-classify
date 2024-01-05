@@ -65,6 +65,12 @@ class VideoFrameDataset(Dataset):
 
         return {'data': images, 'label': label}
 
+    def get_num_item_each_class(self):
+        num_each_class = [0] * 2
+        for label in self.labels:
+            num_each_class[label] += 1
+        return num_each_class
+
 
 def show_images(images, cols=4, title=""):
     """Display a list of images in a grid, with frame number."""
