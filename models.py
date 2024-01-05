@@ -15,7 +15,7 @@ class r3d_18(nn.Module):
         # Remove the last fully connected (fc) layer from the model.
         modules = list(model.children())[:-1]
         self.r3d_18 = nn.Sequential(*modules)  # Reconstruct the model without the last fc layer.
-        self.dropout = nn.Dropout(p=0.5)
+        self.dropout = nn.Dropout(p=0.2)
 
         # Add a new fc layer with output size equal to the number of classes.
         self.fc1 = nn.Linear(model.fc.in_features, self.num_classes)

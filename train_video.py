@@ -122,7 +122,7 @@ if __name__ == '__main__':
     # crop (fill with white), rotate, flip, normalize, add noise, to tensor
     transform_train = transforms.Compose([
         transforms.ToPILImage(),
-        transforms.RandomCrop([sample_size, sample_size], padding=4, padding_mode='reflect'),
+        # transforms.RandomCrop([sample_size, sample_size], padding=4, padding_mode='reflect'),
         transforms.Resize([sample_size, sample_size]),
         transforms.RandomHorizontalFlip(),
         # transforms.RandomVerticalFlip(),
