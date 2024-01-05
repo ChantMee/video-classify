@@ -158,7 +158,7 @@ if __name__ == '__main__':
     weight = [tot_num / num_items_class[i] for i in range(len(num_items_class))]
     weight = torch.FloatTensor(weight).to(device)
     criterion = nn.CrossEntropyLoss(weight=weight)
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=0.01)
 
     # Training and validation loop.
     logger.info("Training Started".center(60, '#'))
