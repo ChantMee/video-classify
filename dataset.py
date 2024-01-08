@@ -71,6 +71,64 @@ class VideoFrameDataset(Dataset):
             num_each_class[label] += 1
         return num_each_class
 
+class VideoFrameDataset_raw(Dataset):
+    def __init__(self, root_dir, frame_count=16, transform=None):
+        """
+        Args:
+            root_dir (string): Path to the dataset directory containing class folders.
+            frame_count (int): Number of frames to extract from each video.
+            transform (callable, optional): A function/transform to process the images.
+        """
+        self.root_dir = root_dir
+        self.frame_count = frame_count
+        self.transform = transform
+        self.samples = []
+        self.labels = []
+
+        # Traverse through the directory to collect paths of all video frames and corresponding labels.
+        for label, class_folder_name in enumerate(os.listdir(root_dir)):
+            class_folder_path = os.path.join(root_dir, class_folder_name)
+            for video_folder_name in os.listdir(class_folder_path):
+                video_folder_path = os.path.join(class_folder_path, video_folder_name)
+                frames = sorted(os.listdir(video_folder_path))
+                if len(frames) < frame_count:
+                    # Repeat some frames if there aren't enough.
+                    frames = frames * (frame_count // len(frames)) + frames[:frame_count % len(frames)]
+                self.samples.append([os.path.join(video_folder_path, frame) for frame in frames])
+                self.labels.append(label)
+
+    def __len__(self):
+        # Return the total number of samples.
+        return len(self.samples)
+
+    def __getitem__(self, idx):
+
+        # Retrieve and process frames for a given index.
+        frame_paths = self.samples[idx]
+        # Select frames at equal intervals.
+        indices = np.linspace(0, len(frame_paths) - 1, self.frame_count).astype(int)
+        selected_frames = [frame_paths[i] for i in indices]
+
+        images = []
+        for frame in selected_frames:
+            image = read_image(frame)  # Read the image.
+            image = image.float()
+            if self.transform:
+                image = self.transform(image)  # Apply transformations.
+            images.append(image)
+
+        # Stack images into a tensor.
+        images = torch.stack(images, dim=1)  # Result size: [3, 16, H, W]
+        label = torch.tensor(self.labels[idx])
+
+        return {'data': images, 'label': label}
+
+    def get_num_item_each_class(self):
+        num_each_class = [0] * 2
+        for label in self.labels:
+            num_each_class[label] += 1
+        return num_each_class
+
 
 def show_images(images, cols=4, title=""):
     """Display a list of images in a grid, with frame number."""
@@ -87,6 +145,21 @@ def show_images(images, cols=4, title=""):
         ax.set_title(f"Frame {i + 1}", fontsize=12)  # Add frame number as title.
 
     plt.show()
+
+
+dataloaders = {
+    'augmented': VideoFrameDataset,
+    'raw': VideoFrameDataset_raw
+}
+
+
+def get_dataloader(name, root_dir, frame_count=16, transform=None, batch_size=16, shuffle=True, num_workers=0):
+    return torch.utils.data.DataLoader(
+        dataloaders[name](root_dir=root_dir, frame_count=frame_count, transform=transform),
+        batch_size=batch_size,
+        shuffle=shuffle,
+        num_workers=num_workers
+    )
 
 
 if __name__ == '__main__':

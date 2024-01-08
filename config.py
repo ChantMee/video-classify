@@ -1,6 +1,12 @@
 import torch
 import random
 
+train_dataloader_name = 'raw'
+test_dataloader_name = 'raw'
+
+train_transform_name = 'raw'
+test_transform_name = 'raw'
+
 # Setting paths for data and logs.
 sum_path = "r3d"
 log_path = "logs/r3d.log"

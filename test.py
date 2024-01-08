@@ -54,14 +54,25 @@ def evaluate(model, dataloader, device):
     # Generating and plotting the confusion matrix.
     cm = confusion_matrix(all_label, all_pred)
     class_names = ['Moving Arms', 'Swing Hands']
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False,
-                xticklabels=class_names, yticklabels=class_names)
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    cax = ax.matshow(cm, cmap=plt.cm.Blues)
+
     plt.title('Confusion Matrix')
     plt.xlabel('Predicted')
     plt.ylabel('True')
-    plt.savefig(model_name + '_confusion_matrix.png')
+
+    ax.set_xticklabels([''] + class_names)
+    ax.set_yticklabels([''] + class_names)
+
+    for i in range(cm.shape[0]):
+        for j in range(cm.shape[1]):
+            ax.text(j, i, str(cm[i, j]), va='center', ha='center', color='black')
+
+    plt.grid(False)
     plt.show()
+    # save to logs/cm.png
+    fig.savefig(f'checkpoints/cm.png')
 
 
 # Main program settings and data loading.
