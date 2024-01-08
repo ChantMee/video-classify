@@ -8,8 +8,8 @@ log_path = "logs/r3d.log"
 # Hyperparameters.
 num_classes = 2
 epochs = 36
-batch_size = 16
-learning_rate = 1e-5
+batch_size = 4
+learning_rate = 1e-6
 sample_size = 128
 sample_duration = 16  # Frame sampling duration.
 

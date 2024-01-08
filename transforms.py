@@ -12,7 +12,7 @@ transform_train = transforms.Compose([
     transforms.ToPILImage(),
     # transforms.RandomCrop([sample_size, sample_size], padding=4, padding_mode='reflect'),
     transforms.Resize([sample_size, sample_size]),
-    transforms.RandomHorizontalFlip(),
+    # transforms.RandomHorizontalFlip(),
     # transforms.RandomVerticalFlip(),
     transforms.RandomRotation(30),
     transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),

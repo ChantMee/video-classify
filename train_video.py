@@ -14,6 +14,7 @@ from tqdm import tqdm
 from dataset import VideoFrameDataset  # Custom dataset for video frames.
 from models import r3d_18, r2plus1d_18  # Custom models (3D ResNet and R(2+1)D).
 import warnings
+import time
 warnings.filterwarnings("ignore")  # Ignore warnings for cleaner output.
 
 # Function for training one epoch.
@@ -87,7 +88,7 @@ def val_epoch(model, criterion, dataloader, device, epoch, logger, writer):
     # Logging to TensorBoard and logger.
     writer.add_scalars('Loss', {'validation': validation_loss}, epoch + 1)
     writer.add_scalars('Accuracy', {'validation': validation_acc}, epoch + 1)
-    logger.info("Average Validation Loss of Epoch {}: {:.6f} | Acc: {:.2f}%".format(epoch + 1, validation_loss, validation_acc * 100))
+    logger.info("Average Testing Loss of Epoch {}: {:.6f} | Acc: {:.2f}%".format(epoch + 1, validation_loss, validation_acc * 100))
 
     return validation_acc
 
@@ -140,7 +141,7 @@ if __name__ == '__main__':
         # Save the model if it has the best accuracy so far.
         if best_acc < validation_acc:
             best_acc = validation_acc
-            torch.save(model.state_dict(), "checkpoints/r3d.pth")
+            torch.save(model.state_dict(), f"checkpoints/r3d{epoch}_{time.time()}.pth")
         logger.info("Epoch {} Model Saved".format(epoch + 1).center(60, '#'))
 
     logger.info("Training Finished".center(60, '#'))
