@@ -72,7 +72,7 @@ num_classes = 2
 
 # Paths for dataset and model weights.
 data_path = 'data/processed  data'
-model_path = "r3d.pth"
+model_path = "checkpoints/r3d.pth"
 model_name = model_path[:-4]  # Extract model name from file path.
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 torch.manual_seed(2023)

@@ -1,3 +1,6 @@
+from config import *
+from transforms import get_transform
+
 import logging
 import os
 import torch
@@ -88,11 +91,6 @@ def val_epoch(model, criterion, dataloader, device, epoch, logger, writer):
 
     return validation_acc
 
-# Setting paths for data and logs.
-
-sum_path = "r3d"
-log_path = "logs/r3d.log"
-
 # Setting up logging to file and TensorBoard.
 logging.basicConfig(level=logging.INFO, format='%(message)s', handlers=[logging.FileHandler(log_path), logging.StreamHandler()])
 logger = logging.getLogger('SLR')
@@ -102,44 +100,10 @@ writer = SummaryWriter(sum_path)
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Hyperparameters.
-num_classes = 2
-epochs = 36
-batch_size = 16
-learning_rate = 1e-5
-sample_size = 128
-sample_duration = 16  # Frame sampling duration.
-
-torch.manual_seed(2023)
-
 if __name__ == '__main__':
-    # Data loading and preprocessing.
-    transform = transforms.Compose([
-        transforms.Resize([sample_size, sample_size]),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
 
-    # crop (fill with white), rotate, flip, normalize, add noise, to tensor
-    transform_train = transforms.Compose([
-        transforms.ToPILImage(),
-        # transforms.RandomCrop([sample_size, sample_size], padding=4, padding_mode='reflect'),
-        transforms.Resize([sample_size, sample_size]),
-        transforms.RandomHorizontalFlip(),
-        # transforms.RandomVerticalFlip(),
-        transforms.RandomRotation(30),
-        transforms.ColorJitter(brightness=0.5, contrast=0.5, hue=0.5),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-    transform_test = transforms.Compose([
-        transforms.ToPILImage(),
-        transforms.Resize([sample_size, sample_size]),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
-
-    train_set = VideoFrameDataset(root_dir="data/train", frame_count=sample_duration, transform=transform_train)
-    test_set = VideoFrameDataset(root_dir="data/test", frame_count=sample_duration, transform=transform_test)
+    train_set = VideoFrameDataset(root_dir="data/train", frame_count=sample_duration, transform=get_transform('train'))
+    test_set = VideoFrameDataset(root_dir="data/test", frame_count=sample_duration, transform=get_transform('test'))
     logger.info("Dataset samples: {}".format(len(train_set) + len(test_set)))
     logger.info("Training samples: {}".format(len(train_set)))
     logger.info("Testing samples: {}".format(len(test_set)))
@@ -157,8 +121,15 @@ if __name__ == '__main__':
     tot_num = sum(num_items_class)
     weight = [tot_num / num_items_class[i] for i in range(len(num_items_class))]
     weight = torch.FloatTensor(weight).to(device)
-    criterion = nn.CrossEntropyLoss(weight=weight)
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=0.01)
+    weight = weight / 10.0
+    if use_weighted_loss:
+        criterion = nn.CrossEntropyLoss(weight=weight)
+    else:
+        criterion = nn.CrossEntropyLoss()
+    if use_l2_regularization:
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=0.01)
+    else:
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     # Training and validation loop.
     logger.info("Training Started".center(60, '#'))
@@ -169,7 +140,7 @@ if __name__ == '__main__':
         # Save the model if it has the best accuracy so far.
         if best_acc < validation_acc:
             best_acc = validation_acc
-            torch.save(model.state_dict(), "r3d.pth")
+            torch.save(model.state_dict(), "checkpoints/r3d.pth")
         logger.info("Epoch {} Model Saved".format(epoch + 1).center(60, '#'))
 
     logger.info("Training Finished".center(60, '#'))
