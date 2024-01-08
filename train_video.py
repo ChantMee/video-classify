@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 
-from dataset import get_dataloader  # Custom dataset for video frames.
+from dataset import get_dataset  # Custom dataset for video frames.
 from models import r3d_18, r2plus1d_18  # Custom models (3D ResNet and R(2+1)D).
 import warnings
 import time
@@ -103,8 +103,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 if __name__ == '__main__':
 
-    train_set = get_dataloader(train_dataloader_name, root_dir="data/train", frame_count=sample_duration, transform=get_transform(train_transform_name), batch_size=batch_size, shuffle=True, num_workers=0)
-    test_set = get_dataloader(test_dataloader_name, root_dir="data/test", frame_count=sample_duration, transform=get_transform(test_transform_name), batch_size=batch_size, shuffle=True, num_workers=0)
+    train_set = get_dataset(train_dataloader_name)(root_dir="data/train", frame_count=sample_duration, transform=get_transform(train_transform_name))
+    test_set = get_dataset(test_dataloader_name)(root_dir="data/test", frame_count=sample_duration, transform=get_transform(test_transform_name))
     logger.info("Dataset samples: {}".format(len(train_set) + len(test_set)))
     logger.info("Training samples: {}".format(len(train_set)))
     logger.info("Testing samples: {}".format(len(test_set)))

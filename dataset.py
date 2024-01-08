@@ -147,19 +147,14 @@ def show_images(images, cols=4, title=""):
     plt.show()
 
 
-dataloaders = {
+datasets = {
     'augmented': VideoFrameDataset,
     'raw': VideoFrameDataset_raw
 }
 
 
-def get_dataloader(name, root_dir, frame_count=16, transform=None, batch_size=16, shuffle=True, num_workers=0):
-    return torch.utils.data.DataLoader(
-        dataloaders[name](root_dir=root_dir, frame_count=frame_count, transform=transform),
-        batch_size=batch_size,
-        shuffle=shuffle,
-        num_workers=num_workers
-    )
+def get_dataset(name):
+    return datasets[name]
 
 
 if __name__ == '__main__':

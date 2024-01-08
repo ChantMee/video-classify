@@ -1,9 +1,11 @@
 import torch
 import random
 
+# raw, augmented
 train_dataloader_name = 'raw'
 test_dataloader_name = 'raw'
 
+# raw, train, test
 train_transform_name = 'raw'
 test_transform_name = 'raw'
 
