@@ -12,7 +12,7 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 
 from dataset import get_dataset  # Custom dataset for video frames.
-from models import r3d_18, r2plus1d_18  # Custom models (3D ResNet and R(2+1)D).
+from models import get_model
 import warnings
 import time
 warnings.filterwarnings("ignore")  # Ignore warnings for cleaner output.
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=False)
 
     # Model selection and preparation.
-    model = r3d_18(pretrained=True, num_classes=num_classes).to(device)
+    model = get_model(model_name, num_classes=num_classes).to(device)
     # calculate the number of trainable parameters in the model
     pytorch_total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     logger.info("Total number of trainable parameters: {}".format(pytorch_total_params))
@@ -141,7 +141,7 @@ if __name__ == '__main__':
         # Save the model if it has the best accuracy so far.
         if best_acc < validation_acc:
             best_acc = validation_acc
-            torch.save(model.state_dict(), f"checkpoints/r3d{epoch}_{time.time()}.pth")
+            torch.save(model.state_dict(), f"checkpoints/{model_name}_{epoch}_{time.time()}_{best_acc}.pth")
         logger.info("Epoch {} Model Saved".format(epoch + 1).center(60, '#'))
 
     logger.info("Training Finished".center(60, '#'))

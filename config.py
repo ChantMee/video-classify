@@ -1,6 +1,9 @@
 import torch
 import random
 
+model_name = 'r3d_18'
+checkpoint_name = 'r3d12_1704777089.9411826.pth'
+
 # raw, augmented
 train_dataloader_name = 'raw'
 test_dataloader_name = 'raw'

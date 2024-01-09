@@ -51,3 +51,14 @@ class r2plus1d_18(nn.Module):
         out = out.flatten(1)  # Flatten the output for the fc layer.
         out = self.fc1(out)  # Pass the output through the new fc layer.
         return out
+
+
+models = {
+    'r3d_18': r3d_18,
+    'r2plus1d_18': r2plus1d_18
+}
+
+
+def get_model(model_name, pretrained=True, num_classes=2):
+    model = models[model_name](pretrained=pretrained, num_classes=num_classes)
+    return model

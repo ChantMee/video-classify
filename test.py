@@ -1,3 +1,6 @@
+from transforms import get_transform
+from config import *
+
 import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
@@ -75,26 +78,15 @@ def evaluate(model, dataloader, device):
     fig.savefig(f'checkpoints/cm.png')
 
 
-# Main program settings and data loading.
-batch_size = 16
-sample_size = 128
-sample_duration = 16
-num_classes = 2
-
 # Paths for dataset and model weights.
-data_path = 'data/processed  data'
-model_path = "checkpoints/r3d.pth"
+data_path = 'data/test'
+model_path = "checkpoints/" + checkpoint_name
 model_name = model_path[:-4]  # Extract model name from file path.
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-torch.manual_seed(2023)
 
 if __name__ == '__main__':
     # Load and preprocess data.
-    transform = transforms.Compose([
-        transforms.Resize([sample_size, sample_size]),
-        transforms.Normalize(mean=[0.5], std=[0.5])
-    ])
-    test_set= VideoFrameDataset(root_dir="data/test", frame_count=sample_duration, transform=transform)
+    test_set= VideoFrameDataset(root_dir=data_path, frame_count=sample_duration, transform=get_transform(test_transform_name))
 
     print("Test Dataset samples: {}".format(len(test_set)))
     test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=False)
