@@ -1,0 +1,13 @@
+Test Dataset samples: 123
+              precision    recall  f1-score   support
+
+           0      0.963     1.000     0.981        78
+           1      1.000     0.933     0.966        45
+
+    accuracy                          0.976       123
+   macro avg      0.981     0.967     0.973       123
+weighted avg      0.977     0.976     0.975       123
+
+Confusion Matrix:
+[[78  0]
+ [ 3 42]]

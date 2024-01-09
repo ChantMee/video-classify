@@ -1,0 +1,226 @@
+Dataset samples: 510
+Training samples: 387
+Test samples: 123
+######################Training Started######################
+Average Training Loss of Epoch 1: 0.714616 | Acc: 46.51%
+Average Testing Loss of Epoch 1: 0.600557 | Acc: 76.42%
+####################Epoch 1 Model Saved#####################
+Average Training Loss of Epoch 2: 0.603851 | Acc: 64.86%
+Average Testing Loss of Epoch 2: 0.535321 | Acc: 86.18%
+####################Epoch 2 Model Saved#####################
+Average Training Loss of Epoch 3: 0.518109 | Acc: 76.23%
+Average Testing Loss of Epoch 3: 0.538776 | Acc: 86.99%
+####################Epoch 3 Model Saved#####################
+Average Training Loss of Epoch 4: 0.462722 | Acc: 83.72%
+Average Testing Loss of Epoch 4: 0.492821 | Acc: 86.99%
+####################Epoch 4 Model Saved#####################
+Average Training Loss of Epoch 5: 0.405109 | Acc: 86.30%
+Average Testing Loss of Epoch 5: 0.481771 | Acc: 87.80%
+####################Epoch 5 Model Saved#####################
+Average Training Loss of Epoch 6: 0.369450 | Acc: 90.18%
+Average Testing Loss of Epoch 6: 0.457337 | Acc: 83.74%
+####################Epoch 6 Model Saved#####################
+Average Training Loss of Epoch 7: 0.365712 | Acc: 88.89%
+Average Testing Loss of Epoch 7: 0.466869 | Acc: 73.17%
+####################Epoch 7 Model Saved#####################
+Average Training Loss of Epoch 8: 0.347687 | Acc: 90.70%
+Average Testing Loss of Epoch 8: 0.427288 | Acc: 87.80%
+####################Epoch 8 Model Saved#####################
+Average Training Loss of Epoch 9: 0.311943 | Acc: 95.35%
+Average Testing Loss of Epoch 9: 0.410245 | Acc: 79.67%
+####################Epoch 9 Model Saved#####################
+Average Training Loss of Epoch 10: 0.307940 | Acc: 93.54%
+Average Testing Loss of Epoch 10: 0.391004 | Acc: 86.18%
+####################Epoch 10 Model Saved####################
+Average Training Loss of Epoch 11: 0.318784 | Acc: 93.54%
+Average Testing Loss of Epoch 11: 0.387842 | Acc: 94.31%
+####################Epoch 11 Model Saved####################
+Average Training Loss of Epoch 12: 0.267572 | Acc: 96.12%
+Average Testing Loss of Epoch 12: 0.426565 | Acc: 73.17%
+####################Epoch 12 Model Saved####################
+Average Training Loss of Epoch 13: 0.262912 | Acc: 97.93%
+Average Testing Loss of Epoch 13: 0.434627 | Acc: 72.36%
+####################Epoch 13 Model Saved####################
+Average Training Loss of Epoch 14: 0.224170 | Acc: 98.45%
+Average Testing Loss of Epoch 14: 0.423457 | Acc: 73.17%
+####################Epoch 14 Model Saved####################
+Average Training Loss of Epoch 15: 0.227554 | Acc: 98.19%
+Average Testing Loss of Epoch 15: 0.334173 | Acc: 88.62%
+####################Epoch 15 Model Saved####################
+Average Training Loss of Epoch 16: 0.219124 | Acc: 99.22%
+Average Testing Loss of Epoch 16: 0.339169 | Acc: 91.87%
+####################Epoch 16 Model Saved####################
+Average Training Loss of Epoch 17: 0.192636 | Acc: 98.45%
+Average Testing Loss of Epoch 17: 0.293138 | Acc: 95.93%
+####################Epoch 17 Model Saved####################
+Average Training Loss of Epoch 18: 0.180938 | Acc: 98.97%
+Average Testing Loss of Epoch 18: 0.365489 | Acc: 80.49%
+####################Epoch 18 Model Saved####################
+Average Training Loss of Epoch 19: 0.185421 | Acc: 98.45%
+Average Testing Loss of Epoch 19: 0.289529 | Acc: 95.12%
+####################Epoch 19 Model Saved####################
+Average Training Loss of Epoch 20: 0.200423 | Acc: 98.45%
+Average Testing Loss of Epoch 20: 0.319383 | Acc: 91.06%
+####################Epoch 20 Model Saved####################
+Average Training Loss of Epoch 21: 0.169354 | Acc: 99.48%
+Average Testing Loss of Epoch 21: 0.302895 | Acc: 89.43%
+####################Epoch 21 Model Saved####################
+Average Training Loss of Epoch 22: 0.181951 | Acc: 97.67%
+Average Testing Loss of Epoch 22: 0.262091 | Acc: 95.12%
+####################Epoch 22 Model Saved####################
+Average Training Loss of Epoch 23: 0.141507 | Acc: 99.48%
+Average Testing Loss of Epoch 23: 0.299422 | Acc: 87.80%
+####################Epoch 23 Model Saved####################
+Average Training Loss of Epoch 24: 0.141316 | Acc: 100.00%
+Average Testing Loss of Epoch 24: 0.299429 | Acc: 88.62%
+####################Epoch 24 Model Saved####################
+Average Training Loss of Epoch 25: 0.130850 | Acc: 99.74%
+Average Testing Loss of Epoch 25: 0.254961 | Acc: 95.93%
+####################Epoch 25 Model Saved####################
+Average Training Loss of Epoch 26: 0.126794 | Acc: 99.48%
+Average Testing Loss of Epoch 26: 0.226759 | Acc: 95.93%
+####################Epoch 26 Model Saved####################
+Average Training Loss of Epoch 27: 0.142727 | Acc: 99.22%
+Average Testing Loss of Epoch 27: 0.275671 | Acc: 90.24%
+####################Epoch 27 Model Saved####################
+Average Training Loss of Epoch 28: 0.127415 | Acc: 99.74%
+Average Testing Loss of Epoch 28: 0.240854 | Acc: 94.31%
+####################Epoch 28 Model Saved####################
+Average Training Loss of Epoch 29: 0.132261 | Acc: 99.74%
+Average Testing Loss of Epoch 29: 0.200204 | Acc: 97.56%
+####################Epoch 29 Model Saved####################
+Average Training Loss of Epoch 30: 0.119070 | Acc: 99.74%
+Average Testing Loss of Epoch 30: 0.206542 | Acc: 95.93%
+####################Epoch 30 Model Saved####################
+Average Training Loss of Epoch 31: 0.094936 | Acc: 100.00%
+Average Testing Loss of Epoch 31: 0.198229 | Acc: 96.75%
+####################Epoch 31 Model Saved####################
+Average Training Loss of Epoch 32: 0.098509 | Acc: 100.00%
+Average Testing Loss of Epoch 32: 0.181363 | Acc: 97.56%
+####################Epoch 32 Model Saved####################
+Average Training Loss of Epoch 33: 0.095245 | Acc: 99.74%
+Average Testing Loss of Epoch 33: 0.178585 | Acc: 97.56%
+####################Epoch 33 Model Saved####################
+Average Training Loss of Epoch 34: 0.107971 | Acc: 99.22%
+Average Testing Loss of Epoch 34: 0.168514 | Acc: 97.56%
+####################Epoch 34 Model Saved####################
+Average Training Loss of Epoch 35: 0.099341 | Acc: 99.48%
+Average Testing Loss of Epoch 35: 0.166765 | Acc: 97.56%
+####################Epoch 35 Model Saved####################
+Average Training Loss of Epoch 36: 0.091748 | Acc: 99.48%
+Average Testing Loss of Epoch 36: 0.170222 | Acc: 95.93%
+####################Epoch 36 Model Saved####################
+#####################Training Finished######################
+Dataset samples: 510
+Training samples: 387
+Test samples: 123
+######################Training Started######################
+Average Training Loss of Epoch 1: 0.806800 | Acc: 33.85%
+Average Testing Loss of Epoch 1: 0.650035 | Acc: 51.22%
+####################Epoch 1 Model Saved#####################
+Average Training Loss of Epoch 2: 0.689624 | Acc: 48.32%
+Average Testing Loss of Epoch 2: 0.590456 | Acc: 75.61%
+####################Epoch 2 Model Saved#####################
+Average Training Loss of Epoch 3: 0.606234 | Acc: 58.40%
+Average Testing Loss of Epoch 3: 0.550164 | Acc: 80.49%
+####################Epoch 3 Model Saved#####################
+Average Training Loss of Epoch 4: 0.542275 | Acc: 63.82%
+Average Testing Loss of Epoch 4: 0.542799 | Acc: 77.24%
+####################Epoch 4 Model Saved#####################
+Average Training Loss of Epoch 5: 0.501057 | Acc: 66.67%
+Average Testing Loss of Epoch 5: 0.485541 | Acc: 88.62%
+####################Epoch 5 Model Saved#####################
+Average Training Loss of Epoch 6: 0.471278 | Acc: 69.25%
+Average Testing Loss of Epoch 6: 0.441611 | Acc: 95.93%
+####################Epoch 6 Model Saved#####################
+Average Training Loss of Epoch 7: 0.429480 | Acc: 76.49%
+Average Testing Loss of Epoch 7: 0.410765 | Acc: 91.87%
+####################Epoch 7 Model Saved#####################
+Average Training Loss of Epoch 8: 0.412918 | Acc: 77.00%
+Average Testing Loss of Epoch 8: 0.395302 | Acc: 93.50%
+####################Epoch 8 Model Saved#####################
+Average Training Loss of Epoch 9: 0.358777 | Acc: 81.91%
+Average Testing Loss of Epoch 9: 0.406054 | Acc: 86.99%
+####################Epoch 9 Model Saved#####################
+Average Training Loss of Epoch 10: 0.360444 | Acc: 83.72%
+Average Testing Loss of Epoch 10: 0.355575 | Acc: 95.93%
+####################Epoch 10 Model Saved####################
+Average Training Loss of Epoch 11: 0.336365 | Acc: 85.79%
+Average Testing Loss of Epoch 11: 0.351128 | Acc: 92.68%
+####################Epoch 11 Model Saved####################
+Average Training Loss of Epoch 12: 0.352338 | Acc: 88.37%
+Average Testing Loss of Epoch 12: 0.342290 | Acc: 91.87%
+####################Epoch 12 Model Saved####################
+Average Training Loss of Epoch 13: 0.326051 | Acc: 89.41%
+Average Testing Loss of Epoch 13: 0.312797 | Acc: 97.56%
+####################Epoch 13 Model Saved####################
+Average Training Loss of Epoch 14: 0.330305 | Acc: 90.18%
+Average Testing Loss of Epoch 14: 0.298532 | Acc: 97.56%
+####################Epoch 14 Model Saved####################
+Average Training Loss of Epoch 15: 0.275985 | Acc: 94.57%
+Average Testing Loss of Epoch 15: 0.333682 | Acc: 92.68%
+####################Epoch 15 Model Saved####################
+Average Training Loss of Epoch 16: 0.264047 | Acc: 94.32%
+Average Testing Loss of Epoch 16: 0.345761 | Acc: 85.37%
+####################Epoch 16 Model Saved####################
+Average Training Loss of Epoch 17: 0.290495 | Acc: 95.87%
+Average Testing Loss of Epoch 17: 0.279282 | Acc: 97.56%
+####################Epoch 17 Model Saved####################
+Average Training Loss of Epoch 18: 0.285679 | Acc: 95.09%
+Average Testing Loss of Epoch 18: 0.265777 | Acc: 97.56%
+####################Epoch 18 Model Saved####################
+Average Training Loss of Epoch 19: 0.215279 | Acc: 97.67%
+Average Testing Loss of Epoch 19: 0.275017 | Acc: 95.93%
+####################Epoch 19 Model Saved####################
+Average Training Loss of Epoch 20: 0.230275 | Acc: 97.67%
+Average Testing Loss of Epoch 20: 0.252256 | Acc: 97.56%
+####################Epoch 20 Model Saved####################
+Average Training Loss of Epoch 21: 0.205159 | Acc: 97.93%
+Average Testing Loss of Epoch 21: 0.243724 | Acc: 97.56%
+####################Epoch 21 Model Saved####################
+Average Training Loss of Epoch 22: 0.204462 | Acc: 97.93%
+Average Testing Loss of Epoch 22: 0.237827 | Acc: 97.56%
+####################Epoch 22 Model Saved####################
+Average Training Loss of Epoch 23: 0.193368 | Acc: 98.45%
+Average Testing Loss of Epoch 23: 0.222408 | Acc: 97.56%
+####################Epoch 23 Model Saved####################
+Average Training Loss of Epoch 24: 0.201659 | Acc: 98.97%
+Average Testing Loss of Epoch 24: 0.235571 | Acc: 96.75%
+####################Epoch 24 Model Saved####################
+Average Training Loss of Epoch 25: 0.182463 | Acc: 99.74%
+Average Testing Loss of Epoch 25: 0.208363 | Acc: 97.56%
+####################Epoch 25 Model Saved####################
+Average Training Loss of Epoch 26: 0.179032 | Acc: 99.48%
+Average Testing Loss of Epoch 26: 0.234499 | Acc: 95.93%
+####################Epoch 26 Model Saved####################
+Average Training Loss of Epoch 27: 0.183748 | Acc: 99.48%
+Average Testing Loss of Epoch 27: 0.194857 | Acc: 97.56%
+####################Epoch 27 Model Saved####################
+Average Training Loss of Epoch 28: 0.169824 | Acc: 99.74%
+Average Testing Loss of Epoch 28: 0.205878 | Acc: 97.56%
+####################Epoch 28 Model Saved####################
+Average Training Loss of Epoch 29: 0.167076 | Acc: 99.48%
+Average Testing Loss of Epoch 29: 0.219943 | Acc: 95.93%
+####################Epoch 29 Model Saved####################
+Average Training Loss of Epoch 30: 0.175514 | Acc: 99.48%
+Average Testing Loss of Epoch 30: 0.224048 | Acc: 95.93%
+####################Epoch 30 Model Saved####################
+Average Training Loss of Epoch 31: 0.151900 | Acc: 99.48%
+Average Testing Loss of Epoch 31: 0.181680 | Acc: 97.56%
+####################Epoch 31 Model Saved####################
+Average Training Loss of Epoch 32: 0.148030 | Acc: 100.00%
+Average Testing Loss of Epoch 32: 0.210219 | Acc: 95.93%
+####################Epoch 32 Model Saved####################
+Average Training Loss of Epoch 33: 0.157264 | Acc: 98.71%
+Average Testing Loss of Epoch 33: 0.178403 | Acc: 97.56%
+####################Epoch 33 Model Saved####################
+Average Training Loss of Epoch 34: 0.142313 | Acc: 99.74%
+Average Testing Loss of Epoch 34: 0.186999 | Acc: 97.56%
+####################Epoch 34 Model Saved####################
+Average Training Loss of Epoch 35: 0.150823 | Acc: 98.97%
+Average Testing Loss of Epoch 35: 0.161816 | Acc: 97.56%
+####################Epoch 35 Model Saved####################
+Average Training Loss of Epoch 36: 0.136295 | Acc: 99.74%
+Average Testing Loss of Epoch 36: 0.159674 | Acc: 97.56%
+####################Epoch 36 Model Saved####################
+#####################Training Finished######################
