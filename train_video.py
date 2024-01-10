@@ -131,7 +131,6 @@ if __name__ == '__main__':
 
     # Model selection and preparation.
     model = r3d_18(pretrained=True, num_classes=num_classes).to(device)
-    # model = r2plus1d_18(pretrained=True, num_classes=num_classes).to(device)
 
     # Loss criterion and optimizer setup.
     criterion = nn.CrossEntropyLoss()

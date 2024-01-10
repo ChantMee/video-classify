@@ -67,48 +67,6 @@ def evaluate(model, dataloader, device):
     plt.show()
 
 
-import torch
-import matplotlib.pyplot as plt
-from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
-import numpy as np
-
-# Function to evaluate the model on the test dataset.
-def evaluate_ROC(model, dataloader, device):
-    all_label = []
-    all_pred = []
-    all_scores = []
-
-    with torch.no_grad():
-        for batch_idx, data in enumerate(dataloader):
-            inputs, labels = data['data'].to(device), data['label'].to(device)
-            outputs = model(inputs)
-            if isinstance(outputs, list):
-                outputs = outputs[0]
-            prediction = torch.max(outputs, 1)[1]
-            all_label.extend(labels.squeeze().cpu().numpy())
-            all_pred.extend(prediction.cpu().numpy())
-            all_scores.extend(outputs[:,1].cpu().numpy())  # Assuming outputs[:,1] are the scores for the positive class.
-
-    print(classification_report(all_label, all_pred, digits=3))
-    
-    # ROC and AUC
-    fpr, tpr, thresholds = roc_curve(all_label, all_scores)
-    roc_auc = auc(fpr, tpr)
-
-    # Plotting ROC Curve
-    plt.figure()
-    plt.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
-    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-    plt.xlim([0.0, 1.0])
-    plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.title('Receiver Operating Characteristic')
-    plt.legend(loc="lower right")
-    plt.show()
-
-
-
 # Main program settings and data loading.
 batch_size = 4
 sample_size = 128
@@ -135,11 +93,9 @@ if __name__ == '__main__':
     # Model selection and loading pretrained weights.
     # Uncomment the model you want to use.
     model = r3d_18(num_classes=num_classes).to(device)
-    # model = r2plus1d_18(num_classes=num_classes).to(device)
 
     model.load_state_dict(torch.load(model_path))
     model.eval()  # Set model to evaluation mode.
 
     # Evaluate the model.
     evaluate(model, test_loader, device)
-    evaluate_ROC(model, test_loader, device)
